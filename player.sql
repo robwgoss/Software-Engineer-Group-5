@@ -1,4 +1,4 @@
-CREATE DATABASE playerlist;
+--CREATE DATABASE playerlist;
 
 CREATE TABLE player(
   id SERIAL PRIMARY KEY,
