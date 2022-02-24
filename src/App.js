@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 //importing splash screen image
-import SplashScreenImage from "./SplashScreenImage.png";
+import SplashScreenImage from "./splashscreenlogo.jpg";
 
 import './App.css';
 
@@ -25,7 +25,7 @@ return isLoading ?
 
 //main page (player entry screen)
 <h1 className="App">
-  This is Main Page
+  Player Entry Screen
 </h1>
 }
 
