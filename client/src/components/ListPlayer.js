@@ -7,7 +7,7 @@ const ListPlayers = () => {
 
     const deletePlayer = async id => {
         try{    
-          const deleteTodo = await fetch(`players/${id}`,{
+          const deletePlayer = await fetch(`players/${id}`,{
               method: "DELETE"
           });
 

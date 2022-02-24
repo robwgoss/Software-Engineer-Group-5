@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from "react";
 
-const EditTodo = ({ player }) => {
+const EditPlayer = ({ player }) => {
   //editText function
 
   const editText = async (id) => {
@@ -86,4 +86,4 @@ const EditTodo = ({ player }) => {
   );
 };
 
-export default EditTodo;
+export default EditPlayer;

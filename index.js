@@ -25,10 +25,10 @@ app.use(express.json());//req.body
 //CREATE A PLAYER
 app.post("/players", async(req, res) =>{
     try{
-      const{first_name} = req.body;
+      const{first_name, last_name, codename} = req.body;
       const newPlayer = await pool.query(
-      "INSERT INTO player (first_name) VALUES($1) RETURNING *", 
-      [first_name]
+      "INSERT INTO player (first_name, last_name, codename) VALUES($1,$2,$3) RETURNING *", 
+      [first_name,last_name,codename]
       );
 
       res.json(newPlayer.rows[0]);
