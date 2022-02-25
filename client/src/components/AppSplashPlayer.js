@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 
 //importing splash screen image
-import SplashScreenImage from "./splashscreenlogo.jpg";
+import SplashScreenImage from "../splashscreenlogo.jpg";
 
-import './App.css';
+import '../App.css';
 
 const App = () => {
   
