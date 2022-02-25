@@ -29,6 +29,8 @@ console.log(player);
   };
   
   const [first_name, setFirst_name] = useState(player.first_name);
+  const [last_name, setLast_name] = useState(player.last_name);
+  const [codename, setCodename] = useState(player.codename);
  
   if(player.hasOwnProperty('teamcolorred')){
   return (
@@ -67,6 +69,22 @@ console.log(player);
                 className="form-control"
                 value={first_name}
                 onChange={(e) => setFirst_name(e.target.value)}
+              />
+            </div>
+            <div class="modal-body">
+              <input
+                type="text"
+                className="form-control"
+                value={last_name}
+                onChange={(e) => setLast_name(e.target.value)}
+              />
+            </div>
+            <div class="modal-body">
+              <input
+                type="text"
+                className="form-control"
+                value={codename}
+                onChange={(e) => setCodename(e.target.value)}
               />
             </div>
 
