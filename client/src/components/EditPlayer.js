@@ -151,6 +151,24 @@ console.log(player);
               />
             </div>
 
+            <div class="modal-body">
+              <input
+                type="text"
+                className="form-control"
+                value={last_name}
+                onChange={(e) => setLast_name(e.target.value)}
+              />
+            </div>
+
+            <div class="modal-body">
+              <input
+                type="text"
+                className="form-control"
+                value={codename}
+                onChange={(e) => setCodename(e.target.value)}
+              />
+            </div>
+
             <div class="modal-footer">
               <button
                 type="button"
