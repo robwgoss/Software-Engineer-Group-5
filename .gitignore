@@ -18,6 +18,9 @@
 .env.test.local
 .env.production.local
 
+# intellij (for those that use intellij some extra files are created that do not need to be tracked)
+.idea
+
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*

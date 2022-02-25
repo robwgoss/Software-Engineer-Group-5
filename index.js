@@ -122,10 +122,10 @@ app.get("/playersGreen/:idgreen", async(req,res) =>{
 app.put("/players/:id", async(req,res)=>{
     try{
         const {id} = req.params;
-        const{first_name} = req.body;
+        const{first_name, last_name, codename} = req.body;
         const updatePlayer = await pool.query(
-            "UPDATE player SET first_name = $1 WHERE id = $2",
-            [first_name, id]
+            'UPDATE "player" SET first_name = $1, last_name = $2, codename = $3 WHERE id = $4',
+            [first_name, last_name, codename, id]
         );
             res.json("Player was updated!");
     }catch(err){
@@ -137,10 +137,10 @@ app.put("/players/:id", async(req,res)=>{
 app.put("/playersGreen/:idgreen", async(req,res)=>{
     try{
         const {idgreen} = req.params;
-        const{first_name} = req.body;
+        const{first_name, last_name, codename} = req.body;
         const updatePlayer = await pool.query(
-            'UPDATE "playergreen" SET first_name = $1 WHERE idgreen = $2',
-            [first_name, idgreen]
+            'UPDATE "playergreen" SET first_name = $1, last_name = $2, codename = $3 WHERE idgreen = $4',
+            [first_name, last_name, codename, idgreen]
         );
             res.json("Player was updated!");
     }catch(err){

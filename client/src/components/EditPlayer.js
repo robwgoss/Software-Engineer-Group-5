@@ -5,7 +5,7 @@ const EditPlayer = ({ player }) => {
 console.log(player);
   const editText = async (id) => {
     try {
-      const body = { first_name };
+      const body = { first_name, last_name, codename };
 
       //proxy
       if(player.hasOwnProperty('teamcolorgreen')){
