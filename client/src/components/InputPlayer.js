@@ -95,7 +95,7 @@ const InputPlayer = () => {
      <form className="d-flex flex-column" onSubmit={onSubmitForm} >
      <input
          type="text"
-         placeholder="Add Id Name"
+         placeholder="Add Id"
          className="form-control"
          value={id}
          onChange={(e) => setId(e.target.value)}
@@ -131,7 +131,7 @@ const InputPlayer = () => {
      <form className="d-flex flex-column" onSubmit={onSubmitFormGreen}>
      <input
          type="text"
-         placeholder="Add Id Name"
+         placeholder="Add Id"
          className="form-control"
          value={idGreen}
          onChange={(e) => setIdGreen(e.target.value)}
