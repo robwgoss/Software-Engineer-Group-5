@@ -29,11 +29,11 @@ app.use(express.json());//req.body
 app.post("/players", async(req, res) =>{
     try{
     
-      const{first_name, last_name, codename} = req.body;
+      const{id,first_name, last_name, codename} = req.body;
       
       const newPlayer = await pool.query(
-      "INSERT INTO player (first_name, last_name, codename) VALUES($1,$2,$3) RETURNING *", 
-      [first_name,last_name,codename]
+      "INSERT INTO player (id,first_name, last_name, codename) VALUES($1,$2,$3,$4) RETURNING *", 
+      [id,first_name,last_name,codename]
       );
 
       res.json(newPlayer.rows[0]);
@@ -48,11 +48,11 @@ app.post("/players", async(req, res) =>{
 app.post("/playersGreen", async(req, res) =>{
     try{
     
-      const{first_nameGreen, last_nameGreen, codenameGreen} = req.body;
+      const{idGreen,first_nameGreen, last_nameGreen, codenameGreen} = req.body;
       
       const newPlayer = await pool.query(
-      'INSERT INTO "playergreen" (first_name, last_name, codename) VALUES($1,$2,$3) RETURNING *', 
-      [first_nameGreen,last_nameGreen,codenameGreen]
+      'INSERT INTO "playergreen" (idgreen, first_name, last_name, codename) VALUES($1,$2,$3,$4) RETURNING *', 
+      [idGreen,first_nameGreen,last_nameGreen,codenameGreen]
       );
 
       res.json(newPlayer.rows[0]);
@@ -90,7 +90,7 @@ app.get("/playersGreen", async(req,res)=>{
 
 });
 
-//GET A PLAYER
+//GET A PLAYER based on id
 app.get("/players/:id", async(req,res) =>{
     try{
     const {id} = req.params;
@@ -104,7 +104,7 @@ app.get("/players/:id", async(req,res) =>{
     }
 });
 
-//GET A GreenPLAYER
+//GET A GreenPLAYER based on id
 app.get("/playersGreen/:idgreen", async(req,res) =>{
     try{
     const {idgreen} = req.params;
@@ -117,6 +117,7 @@ app.get("/playersGreen/:idgreen", async(req,res) =>{
         console.error(err.message);
     }
 });
+
 
 //UPDATE A PLAYER
 app.put("/players/:id", async(req,res)=>{

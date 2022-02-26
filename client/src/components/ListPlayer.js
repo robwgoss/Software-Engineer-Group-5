@@ -72,10 +72,11 @@ useEffect(()=>{
 
 return (<Fragment>
     <div class="row">
-    <div class="col-sm-6 bg-danger text-white table-responsive">
+    <div class="col-sm-6 bg-danger text-white table-responsive table-sm">
             <table className="table mt-5 text-center">
         <thead>
         <tr>
+            <th>Id</th>
             <th>Firstname</th>
             <th>Lastname</th>
             <th>Codename</th>
@@ -91,6 +92,7 @@ return (<Fragment>
         </tr> */}
         {players.map(player => (
             <tr key={player.id}>
+                <td>{player.id}</td>
                 <td>{player.first_name}</td>
                 <td>{player.last_name}</td>
                 <td>{player.codename}</td>
@@ -102,10 +104,11 @@ return (<Fragment>
     </tbody>
   </table></div>
     
-  <div class="col-sm-6 bg-success text-white table-responsive">
+  <div class="col-sm-6 bg-success text-white table-responsive table-sm">
             <table className="table mt-5 text-center">
         <thead>
         <tr>
+            <th>Id</th>
             <th>Firstname</th>
             <th>Lastname</th>
             <th>Codename</th>
@@ -121,6 +124,7 @@ return (<Fragment>
         </tr> */}
         {playersGreen.map(playergreen => (
             <tr key={playergreen.idgreen}>
+                <td>{playergreen.idgreen}</td>
                 <td>{playergreen.first_name}</td>
                 <td>{playergreen.last_name}</td>
                 <td>{playergreen.codename}</td>

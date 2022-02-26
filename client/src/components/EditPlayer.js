@@ -2,7 +2,7 @@ import React, { Fragment, useState } from "react";
 
 const EditPlayer = ({ player }) => {
   //editText function
-console.log(player);
+
   const editText = async (id) => {
     try {
       const body = { first_name, last_name, codename };
