@@ -122,7 +122,7 @@ const InputPlayer = () => {
          value={codename}
          onChange={(e) => setCodename(e.target.value)}
        />
-       <button className="btn btn-success" >Add</button>
+       <button className="btn btn-info" >Add</button>
      </form></div>
       
       
@@ -157,7 +157,7 @@ const InputPlayer = () => {
          value={codenameGreen}
          onChange={(e) => setCodenameGreen(e.target.value)}
        />
-       <button className="btn btn-dark">Add</button>
+       <button className="btn btn-info">Add</button>
      </form></div>
       
       </div>
