@@ -72,8 +72,8 @@ useEffect(()=>{
 
 return (<Fragment>
     <div class="row">
-    <div class="col-sm-6 bg-danger text-white table-responsive table-sm">
-            <table className="table mt-5 text-center">
+    <div class="col-sm-6 bg-danger table-striped text-white table-responsive table-sm">
+            <table className="table table-danger mt-5 text-center">
         <thead>
         <tr>
             <th>Id</th>
@@ -104,8 +104,8 @@ return (<Fragment>
     </tbody>
   </table></div>
     
-  <div class="col-sm-6 bg-success text-white table-responsive table-sm">
-            <table className="table mt-5 text-center">
+  <div class="col-sm-6 bg-success text-white table-striped table-responsive table-sm">
+            <table className="table mt-5 table-success text-center">
         <thead>
         <tr>
             <th>Id</th>
