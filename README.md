@@ -8,7 +8,7 @@ First clone the respository, this repo does not have node_modules installed so t
 
 *Server*
 
-1) Navigate to the top-level project folder. 
+1) Navigate to the top-level project folder in terminal. 
 
 2) Run the command `npm install` to install the node_modules for the server.
 
@@ -16,11 +16,11 @@ First clone the respository, this repo does not have node_modules installed so t
 
 *Client*
 
-1) Navigate to the `client` folder.
+1) Navigate to the `client` folder in a new terminal.
 
 2) Run the command `npm install` to install the node_modules for the client.
 
-3) Once the server is installed and running, run the command `npm start` in  a seperate terminal while still in the `client` folder.
+3) Once the server is installed and running, run the command `npm start` in this terminal while still in the `client` folder.
 
 4) The application will open up a browser tab and boot locally on `http://localhost:3000/`.
 
