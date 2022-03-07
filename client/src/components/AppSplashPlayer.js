@@ -4,6 +4,8 @@ import React, { useState, useEffect } from 'react';
 import SplashScreenImage from "../splashscreenlogo.jpg";
 
 import '../App.css';
+import InputPlayer from "./InputPlayer";
+import ListPlayer from "./ListPlayer";
 
 const App = () => {
   
@@ -16,6 +18,7 @@ const App = () => {
     setTimeout(() => {
       setIsLoading(false);
     }, 3000);
+    
   }, []);
 
 return isLoading ?
@@ -24,9 +27,11 @@ return isLoading ?
 <img src = {SplashScreenImage} width={window.innerWidth/2} height={window.outerHeight/1.1} isLoading={isLoading}class="center" alt="SplashScreen" />:
 
 //main page (player entry screen)
-<h1 className="App">
-  Player Entry Screen
-</h1>
+  <>
+    
+    <h1 className="App">
+      Player Entry Screen
+    </h1><InputPlayer /><ListPlayer /></>
 }
 
 export default App;

@@ -13,8 +13,7 @@ function App() {
     <Fragment>
       <div className="container">
         <AppSlashPlayer/>
-        <InputPlayer />
-        <ListPlayer />
+        
       </div>
     </Fragment>
   );
