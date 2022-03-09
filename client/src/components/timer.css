@@ -1,5 +1,5 @@
 .h1_timer{
-  font-size:1.2rem;
+  font-size:1.55vw;
  
   margin-top:auto;
   margin-bottom:auto;
@@ -41,9 +41,9 @@
     margin-top: 3px;
     margin-bottom: 3px;
     color: #fff;
-    font-size: 18px;   
+    font-size: 1.5vw;   
     background-color: skyblue;
-    width: 5em;
+    width: 15.5vh;
     height: 12vh;
     border: none;
     border-radius: 15px;
