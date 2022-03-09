@@ -17,9 +17,10 @@ function App() {
       
         <BrowserRouter>
       <Routes>
-          <Route path="/" element={<Timer />}/>
-          <Route index element={<Timer/>} />
+          <Route path="/" element={<AppSlashPlayer/>}/>
+          <Route index element={<AppSlashPlayer/>} />
           <Route path="/entryscreen" element={<AppSlashPlayer/>} />
+          <Route path="/playaction" element={<Timer/>} />
          
       </Routes>
     </BrowserRouter>

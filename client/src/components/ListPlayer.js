@@ -82,23 +82,13 @@ useEffect(()=>{
 
 }, []);
 
-// useEffect(() => {
-//     const entries = window.performance.getEntriesByType("navigation");
-//     console.log("running");
-//     if (entries[0].type === "reload") {
-//         // Redirect to login page
-//         navigate("/");
-//     }
-//     return () => {
-//         console.log("reload component unmounted");
-//     }
-// });
+
 
 const handleUserKeyPress = event => {
     const { key, keyCode } = event;
 
     if (keyCode === 116) {
-        navigate("/");
+        navigate("/playaction");
     }
   };
 

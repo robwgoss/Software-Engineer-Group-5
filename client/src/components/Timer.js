@@ -77,7 +77,7 @@ const Timer = () => {
         <div className = "timer">
              
         <div className="container_timer">
-        <button onClick={routeChange} class="previous round button_style">&laquo; Return To Player Screen</button>
+        <button onClick={routeChange} class="previous round button_style">&laquo; Return To Player Entry Screen</button>
         <div className="timer_container">
             <button onClick={restart} class="restart">RESTART</button>
             <h1 class="h1_timer">Warning Timer<br />{minutes<10 ? "0"+minutes:minutes}:{seconds<10?"0"+seconds:seconds}<br />Game Is About To Start</h1>

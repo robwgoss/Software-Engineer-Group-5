@@ -29,7 +29,7 @@ return isLoading ?
 //main page (player entry screen)
   <>
     
-    <div className = "container"><h1 style={{textAlign:"center",marginTop:"-50px"}}>
+    <div className = "container"><h1 style={{textAlign:"center"}}>
       Player Entry Screen
     </h1><InputPlayer /><ListPlayer /></div></>
 }
