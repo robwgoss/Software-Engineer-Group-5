@@ -1,0 +1,90 @@
+.h1_timer{
+  font-size:1.2rem;
+ 
+  margin-top:auto;
+  margin-bottom:auto;
+  margin-right:2.5em;
+  
+}
+.timer{
+    width:100%;
+    height:100vh;
+    background-color: skyblue;
+    display:flex;
+   
+
+}
+
+.container_timer{
+    padding-top:5px;
+    display:flex;
+   align-items: flex-start;
+
+}
+
+.timer_container{
+    background-color: #fff;
+    width:40vw;
+    height:13vh;
+    padding: 0rem 0rem;
+    border-radius: 1rem;
+    box-shadow: 0 1rem 1rem -0.7rem rgb(0,0,0,0.4);
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+   /*inline block to stay next to return to player screen button*/
+    display:flex ;
+    
+}
+
+.stop,.restart{
+    margin-top: 3px;
+    margin-bottom: 3px;
+    color: #fff;
+    font-size: 18px;   
+    background-color: skyblue;
+    width: 5em;
+    height: 12vh;
+    border: none;
+    border-radius: 15px;
+    cursor:pointer;
+   
+}
+
+.stop{
+   
+    margin-right:0em;
+}
+.restart{
+    margin-left:0.2em;
+    margin-right:3em;
+}
+
+.button_style {
+    text-decoration: none;
+    display:flex;
+   
+    padding: 8px 16px;
+    margin-right:3rem;
+    margin-left:5rem;
+    
+  }
+  
+button.button_style:hover {
+    background-color: #ddd;
+    color: black;
+  }
+  
+  .previous {
+    background-color: #f1f1f1;
+    color: black;
+  }
+  
+  .next {
+    background-color: #e0cefd;
+    color: black;
+  }
+  
+  .round {
+    border-radius: 10%;
+  }

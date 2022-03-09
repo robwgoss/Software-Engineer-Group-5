@@ -1,6 +1,10 @@
 import React, {Fragment, useEffect, useState} from "react";
 import EditPlayer from "./EditPlayer";
+import { useNavigate } from "react-router-dom";
+import '../App.css';
+
 const ListPlayers = () => {
+    let navigate = useNavigate();
     const [players, setPlayers] = useState([]);
 
     const [playersGreen, setPlayersGreen] = useState([]);
@@ -41,6 +45,9 @@ const ListPlayers = () => {
         }catch(err){
             console.error(err.message);
         }
+        return () => {
+            console.log("component unmounted");
+        }
 
     }
     const getPlayersGreen = async () => {
@@ -52,23 +59,48 @@ const ListPlayers = () => {
         }catch(err){
             console.error(err.message);
         }
-
+        return () => {
+            console.log("component unmounted");
+        }
     }
 
 
 useEffect(()=>{
 
     getPlayers();
-   
+   return () => {
+       console.log("component unmounted");
+   }
 
 }, []);  
 
 useEffect(()=>{
 
     getPlayersGreen();
-   
+    return () => {
+        console.log("component unmounted");
+    }
 
 }, []);
+
+
+
+const handleUserKeyPress = event => {
+    const { key, keyCode } = event;
+
+    if (keyCode === 116) {
+        navigate("/playaction");
+    }
+    
+  };
+
+  useEffect(() => {
+    window.addEventListener('keydown', handleUserKeyPress);
+
+    return () => {
+      window.removeEventListener('keydown', handleUserKeyPress);
+    };
+  });
 
 return (<Fragment>
     <div class="row">
