@@ -1,6 +1,7 @@
 import React, {Fragment, useEffect, useState} from "react";
 import EditPlayer from "./EditPlayer";
 import { useNavigate } from "react-router-dom";
+import '../App.css';
 
 const ListPlayers = () => {
     let navigate = useNavigate();
@@ -90,6 +91,7 @@ const handleUserKeyPress = event => {
     if (keyCode === 116) {
         navigate("/playaction");
     }
+    
   };
 
   useEffect(() => {

@@ -40,6 +40,7 @@ app.post("/players", async(req, res) =>{
    
     }catch(err){
         console.error(err.message);
+        
     }
 });
 
@@ -101,6 +102,7 @@ app.get("/players/:id", async(req,res) =>{
     res.json(player.rows[0])
     }catch(err){
         console.error(err.message);
+        
     }
 });
 

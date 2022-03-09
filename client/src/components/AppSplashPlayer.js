@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
-
+import { useNavigate } from 'react-router-dom';
 //importing splash screen image
 import SplashScreenImage from "../splashscreenlogo.jpg";
 
 import '../App.css';
 import InputPlayer from "./InputPlayer";
 import ListPlayer from "./ListPlayer";
+import { Navigate } from 'react-router-dom';
 
 const App = () => {
-  
+  const navigate = useNavigate();
   //loading state
   const [isLoading, setIsLoading] = useState(true);
 
@@ -29,9 +30,8 @@ return isLoading ?
 //main page (player entry screen)
   <>
     
-    <div className = "container"><h1 style={{textAlign:"center"}}>
-      Player Entry Screen
-    </h1><InputPlayer /><ListPlayer /></div></>
+    {navigate("/entryscreen")}</>
+  
 }
 
 export default App;

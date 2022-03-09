@@ -19,7 +19,7 @@ function App() {
       <Routes>
           <Route path="/" element={<AppSlashPlayer/>}/>
           <Route index element={<AppSlashPlayer/>} />
-          <Route path="/entryscreen" element={<AppSlashPlayer/>} />
+          <Route path="/entryscreen" element={<InputPlayer />} />
           <Route path="/playaction" element={<Timer/>} />
          
       </Routes>
