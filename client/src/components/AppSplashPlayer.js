@@ -29,9 +29,9 @@ return isLoading ?
 //main page (player entry screen)
   <>
     
-    <h1 className="App">
+    <div className = "container"><h1 style={{textAlign:"center",marginTop:"-50px"}}>
       Player Entry Screen
-    </h1><InputPlayer /><ListPlayer /></>
+    </h1><InputPlayer /><ListPlayer /></div></>
 }
 
 export default App;
