@@ -6,7 +6,7 @@ const Timer = () => {
     let navigate = useNavigate();
 
 
-    const [seconds, setSeconds] = useState(3);
+    const [seconds, setSeconds] = useState(30);
     const [secondsCountdown, setSecondsCountdown] = useState(1);
     const [minutes, setMinutes] = useState(0);
     const [minutesCountdown, setMinutesCountdown] = useState(6);
