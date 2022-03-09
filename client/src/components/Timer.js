@@ -1,11 +1,12 @@
 import React, {useEffect,useState, useRef} from 'react';
 import './timer.css';
 import { useNavigate } from "react-router-dom";
+import ScoresScreen from "./PlayersScores";
 const Timer = () => {
     let navigate = useNavigate();
 
 
-    const [seconds, setSeconds] = useState(30);
+    const [seconds, setSeconds] = useState(3);
     const [secondsCountdown, setSecondsCountdown] = useState(1);
     const [minutes, setMinutes] = useState(0);
     const [minutesCountdown, setMinutesCountdown] = useState(6);
@@ -101,10 +102,13 @@ const Timer = () => {
                 <h1 class="h1_timer">Countdown Timer<br/>{minutesCountdown<10 ? "0"+minutesCountdown:minutesCountdown}:{secondsCountdown<10?"0"+secondsCountdown:secondsCountdown}<br />The Game Has Started</h1>
                 
                 <button onClick={stop} class="stop">STOP</button>
-        
-            </div>    
             
             </div>    
+
+           
+            </div>    
+            <div className = "scoreStyle"><ScoresScreen /></div> 
+            
             </div>
         )
     }

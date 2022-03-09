@@ -11,7 +11,7 @@
     height:100vh;
     background-color: skyblue;
     display:flex;
-   
+    flex-direction: column;
 
 }
 
@@ -19,7 +19,7 @@
     padding-top:5px;
     display:flex;
    align-items: flex-start;
-
+   
 }
 
 .timer_container{
@@ -30,7 +30,7 @@
     border-radius: 1rem;
     box-shadow: 0 1rem 1rem -0.7rem rgb(0,0,0,0.4);
     text-align: center;
-    margin-left: auto;
+    margin-left: 8vw;
     margin-right: auto;
    /*inline block to stay next to return to player screen button*/
     display:flex ;
@@ -65,7 +65,7 @@
     display:flex;
    
     padding: 8px 16px;
-    margin-right:3rem;
+    
     margin-left:5rem;
     
   }
@@ -88,3 +88,10 @@ button.button_style:hover {
   .round {
     border-radius: 10%;
   }
+
+.scoreStyle{
+  
+  width:85%;
+  height: 50%;
+  align-self: center;
+}
