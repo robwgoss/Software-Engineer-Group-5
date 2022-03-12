@@ -19,7 +19,6 @@ const ListPlayers = () => {
         }catch(err){
             console.error(err.message);
         }
-
     }
 
     const getPlayers = async (player_status) => {
@@ -34,15 +33,11 @@ const ListPlayers = () => {
         return () => {
             console.log("component unmounted");
         }
-
     }
 
     useEffect(()=>{
-        getPlayers('red')
-            .then((jsonData) => setPlayers(jsonData))
-
-        getPlayers('green')
-            .then((jsonData) => setPlayersGreen(jsonData))
+        getPlayers('red').then((jsonData) => setPlayers(jsonData))
+        getPlayers('green').then((jsonData) => setPlayersGreen(jsonData))
 
         return () => {
             console.log("component unmounted");
