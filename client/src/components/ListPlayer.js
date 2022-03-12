@@ -16,6 +16,7 @@ const ListPlayers = () => {
           });
 
           setPlayers(players.filter(player => player.id !== id));
+          setPlayersGreen(players.filter(player => player.id !== id));
         }catch(err){
             console.error(err.message);
         }
@@ -41,23 +42,15 @@ const ListPlayers = () => {
 useEffect(()=>{
         getPlayers('red')
             .then((jsonData) => setPlayers(jsonData))
-        //getPlayers('red', (jsonData) => setPlayers(jsonData.filter(player => player.id !== id)));
+
+    getPlayers('green')
+        .then((jsonData) => setPlayersGreen(jsonData))
+
    return () => {
        console.log("component unmounted");
    }
 
 }, []);  
-
-// useEffect(()=>{
-//
-//     //getPlayers('green')
-//     return () => {
-//         console.log("component unmounted");
-//     }
-//
-// }, []);
-//
-
 
 const handleUserKeyPress = event => {
     const { key, keyCode } = event;
@@ -92,11 +85,6 @@ return (<Fragment>
         </tr>
         </thead>
         <tbody>
-            {/*  <tr>
-            <td>John</td>
-            <td>Doe</td>
-            <td>john@example.com</td>
-        </tr> */}
         {players.map(player => (
             <tr key={player.id}>
                 <td>{player.id}</td>
@@ -124,7 +112,6 @@ return (<Fragment>
         </tr>
         </thead>
         <tbody>
-            {}
         {playersGreen.map(playergreen => (
             <tr key={playergreen.idgreen}>
                 <td>{playergreen.idgreen}</td>

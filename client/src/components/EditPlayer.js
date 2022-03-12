@@ -8,20 +8,11 @@ const EditPlayer = ({ player }) => {
       const body = { first_name, last_name, codename };
 
       //proxy
-      if(player.hasOwnProperty('teamcolorgreen')){
-      const res = await fetch(`/playersGreen/${id}`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(body),
-      });
-    }else if(player.hasOwnProperty('teamcolorred')){
       const res = await fetch(`/players/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
       });
-    }
-
       window.location = "/";
     } catch (err) {
       console.error(err.message);
@@ -32,7 +23,7 @@ const EditPlayer = ({ player }) => {
   const [last_name, setLast_name] = useState(player.last_name);
   const [codename, setCodename] = useState(player.codename);
  
-  if(player.hasOwnProperty('teamcolorred')){
+  if(player.status === 'red'){
   return (
     <Fragment>
       <button
@@ -111,7 +102,7 @@ const EditPlayer = ({ player }) => {
       </div>
     </Fragment>
   );
-}else if(player.hasOwnProperty('teamcolorgreen')){
+}else if(player.status === 'green'){
   return (
     <Fragment>
       <button
