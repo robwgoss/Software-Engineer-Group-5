@@ -77,7 +77,7 @@ app.put("/players/:id", async(req,res)=>{
         const id = req.params.id;
         const{first_name, last_name, codename, status} = req.body;
         const updatePlayer = await pool.query(
-            'UPDATE "player" SET first_name = $1, last_name = $2, codename = $3 , status = $4, WHERE id = $5',
+            'UPDATE "player" SET first_name = $1, last_name = $2, codename = $3 , status = $4 WHERE id = $5',
             [first_name, last_name, codename, status, id]
         );
             res.json("Player was updated!");
