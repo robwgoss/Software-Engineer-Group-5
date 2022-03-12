@@ -6,17 +6,16 @@ import '../App.css';
 const ListPlayers = () => {
     let navigate = useNavigate();
     const [players, setPlayers] = useState([]);
-
     const [playersGreen, setPlayersGreen] = useState([]);
 
-    const deletePlayer = async id => {
+    const deletePlayer = async (id, status) => {
         try{    
           const deletePlayer = await fetch(`players/${id}`,{
               method: "DELETE"
           });
 
           setPlayers(players.filter(player => player.id !== id));
-          setPlayersGreen(players.filter(player => player.id !== id));
+          setPlayersGreen(playersGreen.filter(player => player.id !== id));
         }catch(err){
             console.error(err.message);
         }
@@ -38,21 +37,20 @@ const ListPlayers = () => {
 
     }
 
-
-useEffect(()=>{
+    useEffect(()=>{
         getPlayers('red')
             .then((jsonData) => setPlayers(jsonData))
 
-    getPlayers('green')
-        .then((jsonData) => setPlayersGreen(jsonData))
+        getPlayers('green')
+            .then((jsonData) => setPlayersGreen(jsonData))
 
-   return () => {
-       console.log("component unmounted");
-   }
+        return () => {
+            console.log("component unmounted");
+        }
 
-}, []);  
+    }, []);
 
-const handleUserKeyPress = event => {
+    const handleUserKeyPress = event => {
     const { key, keyCode } = event;
 
     if (keyCode === 116) {
@@ -112,14 +110,14 @@ return (<Fragment>
         </tr>
         </thead>
         <tbody>
-        {playersGreen.map(playergreen => (
-            <tr key={playergreen.idgreen}>
-                <td>{playergreen.idgreen}</td>
-                <td>{playergreen.first_name}</td>
-                <td>{playergreen.last_name}</td>
-                <td>{playergreen.codename}</td>
-                <td><EditPlayer player={playergreen}/></td>
-                <td><button className = "btn btn-warning" onClick={()=>deletePlayer(playergreen.idgreen)}>Delete</button></td>
+        {playersGreen.map(player => (
+            <tr key={player.id}>
+                <td>{player.id}</td>
+                <td>{player.first_name}</td>
+                <td>{player.last_name}</td>
+                <td>{player.codename}</td>
+                <td><EditPlayer player={player}/></td>
+                <td><button className = "btn btn-warning" onClick={()=>deletePlayer(player.id)}>Delete</button></td>
             </tr>
          ))}
 
