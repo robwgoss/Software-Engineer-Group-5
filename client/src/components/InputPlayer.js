@@ -6,86 +6,39 @@ import { useNavigate } from "react-router-dom";
 
 const InputPlayer = () => {
   let navigate = useNavigate();
-  const [id, setId] = useState("");
   const [first_name, setFirst_name] = useState("");
   const [last_name, setLast_name] = useState("");
   const [codename, setCodename] = useState("");
 
-  const [idGreen, setIdGreen] = useState("");
   const [first_nameGreen, setFirst_nameGreen] = useState("");
   const [last_nameGreen, setLast_nameGreen] = useState("");
   const [codenameGreen, setCodenameGreen] = useState("");
 
 
-  const onSubmitForm = async (e) => {
-    e.preventDefault();
+  const onSubmitForm = async (event, first_name, last_name, codename, playerStatus) => {
+    event.preventDefault();
   
     try {
-      const body = {id,first_name,last_name,codename };
+      const body = {first_name,last_name,codename, 'status' : playerStatus};
       
       //proxy is only use in development so it will be ignored in production
       //so if there is no http://localhost:5000 then by default it is going to use heroku domain
       //remember this heroku app is just our server serving the build static content and also holding the restful api
 
       //https://pern-player-app-demo.herokuapp.com/players
-     try{ 
-       const responseOne = await fetch(`/players/${id}`);
-      const jsonData = await responseOne.json();
-      console.log(jsonData);
-      alert(`Player  With  Id#  ${id}  Exists  Already  With  Codename  "${jsonData.codename}"`);
-  
-     }catch(err){
+
       const response = await fetch("/players", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
-      }
-      
-      );
+      });
       window.location = "/";
-      
-     }
     
     } catch (err) {
       console.error(err.message);
     }
   };
 
-  const onSubmitFormGreen = async (e) => {
-    e.preventDefault();
-    try {
-      const body = {idGreen, first_nameGreen,last_nameGreen,codenameGreen };
-      //proxy is only use in development so it will be ignored in production
-      //so if there is no http://localhost:5000 then by default it is going to use heroku domain
-      //remember this heroku app is just our server serving the build static content and also holding the restful api
-
-      //https://pern-player-app-demo.herokuapp.com/players
-      
-      try{ 
-        const responseOne = await fetch(`/playersGreen/${idGreen}`);
-       const jsonData = await responseOne.json();
-       console.log(jsonData);
-       alert(`Player  With  Id#  ${idGreen}  Exists  Already  With  Codename  "${jsonData.codename}"`);
-   
-      }catch(err){
-       const response = await fetch("/playersGreen", {
-         method: "POST",
-         headers: { "Content-Type": "application/json" },
-         body: JSON.stringify(body),
-       }
-       
-       );
-       window.location = "/";
-       
-      }
-    } catch (err) {
-      console.error(err.message);
-    }
-
-    
-  };
-
-  
   const routeChangeToPlayAction = ()=>{
 
 
@@ -119,14 +72,7 @@ const routeChangeToSplashScreen = ()=>{
       <div class="col bg-danger text-white"><h1 className="text-left my-5 ">Input Player (RED TEAM)</h1>
      
      
-     <form className="d-flex flex-column" onSubmit={onSubmitForm} >
-     <input
-         type="number"
-         placeholder="Add Id (Integer)"
-         className="form-control"
-         value={id}
-         onChange={(e) => setId(e.target.value)}
-       />
+     <form className="d-flex flex-column" onSubmit={(e) => onSubmitForm(e, first_name, last_name, codename, 'red')} >
        <input
          type="text"
          placeholder="Add First Name (Optional)"
@@ -155,14 +101,7 @@ const routeChangeToSplashScreen = ()=>{
       
      <div class="col bg-success text-white"><h1 className="text-right my-5 ">Input Player (Green TEAM)</h1>
      
-     <form className="d-flex flex-column" onSubmit={onSubmitFormGreen}>
-     <input
-         type="number"
-         placeholder="Add Id (Integer)"
-         className="form-control"
-         value={idGreen}
-         onChange={(e) => setIdGreen(e.target.value)}
-       />
+     <form className="d-flex flex-column" onSubmit={(e) => onSubmitForm(e, first_nameGreen, last_nameGreen, codenameGreen, 'green')}>
        <input
          type="text"
          placeholder="Add First Name (Optional)"

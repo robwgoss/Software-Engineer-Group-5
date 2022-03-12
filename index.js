@@ -29,6 +29,8 @@ app.use(express.json());//req.body
 app.post("/players", async(req, res) =>{
     try{
       const{first_name, last_name, codename, status} = req.body;
+
+        console.log("Added player ", first_name, last_name, codename, status);
       
       const newPlayer = await pool.query(
       "INSERT INTO player (first_name, last_name, codename, status) VALUES($1,$2,$3,$4) RETURNING *", 
@@ -39,7 +41,6 @@ app.post("/players", async(req, res) =>{
    
     }catch(err){
         console.error(err.message);
-        
     }
 });
 
