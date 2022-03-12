@@ -3,9 +3,9 @@ import React, { Fragment, useState } from "react";
 const EditPlayer = ({ player }) => {
   //editText function
 
-  const editText = async (id) => {
+  const editText = async (id, player_status) => {
     try {
-      const body = { first_name, last_name, codename };
+      const body = { first_name, last_name, codename, status : player_status };
 
       //proxy
       const res = await fetch(`/players/${id}`, {
@@ -34,7 +34,6 @@ const EditPlayer = ({ player }) => {
       >
         Edit
       </button>
-      {/* id = "id21"*/}
       <div
         class="modal"
         id={`id${player.id}`}
@@ -84,7 +83,7 @@ const EditPlayer = ({ player }) => {
                 type="button"
                 class="btn btn-primary"
                 data-dismiss="modal"
-                onClick={() => editText(player.id)}
+                onClick={() => editText(player.id, 'red')}
               >
                 Edit
               </button>
@@ -109,14 +108,14 @@ const EditPlayer = ({ player }) => {
         type="button"
         class="btn btn-primary"
         data-toggle="modal"
-        data-target={`#idgreen${player.idgreen}`}
+        data-target={`#id${player.id}`}
       >
         Edit
       </button>
       {/* id = "id21"*/}
       <div
         class="modal"
-        id={`idgreen${player.idgreen}`}
+        id={`id${player.id}`}
         onClick={() => setFirst_name(player.first_name)}
       >
         <div class="modal-dialog">
@@ -165,7 +164,7 @@ const EditPlayer = ({ player }) => {
                 type="button"
                 class="btn btn-primary"
                 data-dismiss="modal"
-                onClick={() => editText(player.idgreen)}
+                onClick={() => editText(player.id, 'green')}
               >
                 Edit
               </button>
