@@ -44,7 +44,7 @@ app.post("/players", async(req, res) =>{
 });
 
 //GET ALL PLAYERS DEPENDING ON STATUS
-app.get("/players", async(req,res)=>{
+app.get("/players/:id", async(req,res)=>{
     try{
         const status = req.params;
         const allPlayers = await pool.query("SELECT * FROM player WHERE status = $1", [status]);
