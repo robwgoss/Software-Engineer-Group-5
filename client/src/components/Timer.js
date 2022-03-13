@@ -89,6 +89,8 @@ const Timer = () => {
        
         </div>    
         
+        <div className = "scoreStyle"><ScoresScreen /></div> 
+
         </div>
     )}else{
         return(

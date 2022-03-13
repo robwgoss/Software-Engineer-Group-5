@@ -109,7 +109,7 @@ const routeChangeToSplashScreen = ()=>{
   <div style={{display:"flex"}}>
   <button onClick = {routeChangeToSplashScreen} class="next round" style={{marginLeft:"1%"}}>&laquo;Show Logo Screen</button>
   
-    <h1 style={{textAlign:"center",marginLeft:"19%"}}>
+    <h1 style={{textAlign:"center",marginLeft:"19%",color:"white"}}>
       Player Entry Screen
     </h1>
       <button onClick = {routeChangeToPlayAction} class="next round" style={{marginLeft:"15%"}}>Play Action Screen (Key F5)&#8250;</button>
