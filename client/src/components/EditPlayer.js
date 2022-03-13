@@ -54,7 +54,7 @@ const EditPlayer = ({ player }) => {
             </div>
 
             <div className="modal-body">
-              <div className="modal-body">
+              <div>
                 <input
                     type="number"
                     className="form-control"
@@ -63,6 +63,7 @@ const EditPlayer = ({ player }) => {
                     placeholder={"Edit ID"}
                 />
               </div>
+              <div className="modal-body"></div>
               <input
                   type="text"
                   className="form-control"
@@ -70,6 +71,7 @@ const EditPlayer = ({ player }) => {
                   onChange={(e) => setFirst_name(e.target.value)}
                   placeholder={"Edit First Name"}
               />
+              
             </div>
             <div class="modal-body">
               <input
@@ -144,7 +146,7 @@ const EditPlayer = ({ player }) => {
             </div>
 
             <div className="modal-body">
-              <div className="modal-body">
+              <div>
                 <input
                     type="number"
                     className="form-control"
@@ -153,6 +155,7 @@ const EditPlayer = ({ player }) => {
                     placeholder={"Edit ID"}
                 />
               </div>
+              <div className="modal-body"></div>
               <input
                   type="text"
                   className="form-control"
