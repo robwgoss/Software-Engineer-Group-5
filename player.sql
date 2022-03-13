@@ -1,4 +1,5 @@
 
+--CREATE DATABASE playerlist;
 CREATE TYPE STATUS AS ENUM('red', 'green', 'inactive');
 CREATE TABLE player(
     id SERIAL PRIMARY KEY,
