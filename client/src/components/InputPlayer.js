@@ -42,7 +42,7 @@ const InputPlayer = () => {
       }
       
       );
-      window.location = "/";
+      window.location = "/entryscreen";
       
      }
     
@@ -75,7 +75,7 @@ const InputPlayer = () => {
        }
        
        );
-       window.location = "/";
+       window.location = "/entryscreen";
        
       }
     } catch (err) {
