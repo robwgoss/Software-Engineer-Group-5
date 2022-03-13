@@ -9,53 +9,25 @@ const ScoresScreen = () => {
 
     const [playersGreen, setPlayersGreen] = useState([]);
 
-    const deletePlayer = async id => {
-        try{    
-          const deletePlayer = await fetch(`players/${id}`,{
-              method: "DELETE"
-          });
+    const deletePlayer = async (id, status) => {
+        try{
+            const deletePlayer = await fetch(`players/${id}`,{
+                method: "DELETE"
+            });
 
-          setPlayers(players.filter(player => player.id !== id));
+            setPlayers(players.filter(player => player.id !== id));
+            setPlayersGreen(playersGreen.filter(player => player.id !== id));
         }catch(err){
             console.error(err.message);
         }
-
     }
 
-    const deletePlayerGreen = async idgreen => {
-        try{    
-          const deletePlayer = await fetch(`playersGreen/${idgreen}`,{
-              method: "DELETE"
-          });
-
-          setPlayersGreen(playersGreen.filter(playergreen => playergreen.idgreen !== idgreen));
-        }catch(err){
-            console.error(err.message);
-        }
-
-    }
-
-
-    const getPlayers = async () => {
-        try{    
-            const response = await fetch("/players")
+    const getPlayers = async (player_status) => {
+        try{
+            const response = await fetch('/player_status/' + player_status)
             const jsonData = await response.json();
 
-            setPlayers(jsonData);
-        }catch(err){
-            console.error(err.message);
-        }
-        return () => {
-            console.log("component unmounted");
-        }
-
-    }
-    const getPlayersGreen = async () => {
-        try{    
-            const response = await fetch("/playersGreen")
-            const jsonData = await response.json();
-
-            setPlayersGreen(jsonData);
+            return jsonData
         }catch(err){
             console.error(err.message);
         }
@@ -63,27 +35,16 @@ const ScoresScreen = () => {
             console.log("component unmounted");
         }
     }
-
 
 useEffect(()=>{
 
-    getPlayers();
+    getPlayers('red').then((jsonData) => setPlayers(jsonData))
+    getPlayers('green').then((jsonData) => setPlayersGreen(jsonData))
    return () => {
        console.log("component unmounted");
    }
 
 }, []);  
-
-useEffect(()=>{
-
-    getPlayersGreen();
-    return () => {
-        console.log("component unmounted");
-    }
-
-}, []);
-
-
 
 return (<Fragment>
     <div class="row">
@@ -98,19 +59,11 @@ return (<Fragment>
         </tr>
         </thead>
         <tbody>
-            {/*  <tr>
-            <td>John</td>
-            <td>Doe</td>
-            <td>john@example.com</td>
-        </tr> */}
         {players.map(player => (
             <tr key={player.id}>
-               
                 <td>{player.codename}</td>
-               
             </tr>
          ))}
-     
     </tbody>
   </table></div>
     
@@ -124,20 +77,11 @@ return (<Fragment>
         </tr>
         </thead>
         <tbody>
-            {/*  <tr>
-            <td>John</td>
-            <td>Doe</td>
-            <td>john@example.com</td>
-        </tr> */}
-        {playersGreen.map(playergreen => (
-            <tr key={playergreen.idgreen}>
-          
-                <td>{playergreen.codename}</td>
-                
-             
+        {playersGreen.map(player => (
+            <tr key={player.id}>
+                <td>{player.codename}</td>
             </tr>
          ))}
-     
     </tbody>
   </table></div>
    

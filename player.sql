@@ -1,19 +1,9 @@
---CREATE DATABASE playerlist;
 
+CREATE TYPE STATUS AS ENUM('red', 'green', 'inactive');
 CREATE TABLE player(
-  id SERIAL PRIMARY KEY,
-  first_name VARCHAR(30),
-  last_name VARCHAR(30),
-  codename VARCHAR(30),
-  teamcolorRED VARCHAR(1)
-
-);
-
-CREATE TABLE playergreen(
-  idgreen SERIAL PRIMARY KEY,
-  first_name VARCHAR(30),
-  last_name VARCHAR(30),
-  codename VARCHAR(30),
-  teamcolorGREEN VARCHAR(1)
-
+    id SERIAL PRIMARY KEY,
+    first_name VARCHAR(30),
+    last_name VARCHAR(30),
+    codename VARCHAR(30),
+    status STATUS DEFAULT 'inactive'
 );
