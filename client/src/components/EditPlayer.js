@@ -5,7 +5,7 @@ const EditPlayer = ({ player }) => {
 
   const editText = async (id, player_status) => {
     try {
-      const body = {id, first_name, last_name, codename, status : player_status };
+      const body = {new_id, first_name, last_name, codename, status : player_status };
 
       //proxy
       const res = await fetch(`/players/${id}`, {
@@ -19,7 +19,7 @@ const EditPlayer = ({ player }) => {
     }
   };
 
-  const [id, setId] = useState(player.id)
+  const [new_id, set_NewId] = useState(player.id)
   const [first_name, setFirst_name] = useState(player.first_name);
   const [last_name, setLast_name] = useState(player.last_name);
   const [codename, setCodename] = useState(player.codename);
@@ -38,7 +38,6 @@ const EditPlayer = ({ player }) => {
       <div
         class="modal"
         id={`id${player.id}`}
-        onClick={() => setFirst_name(player.first_name)}
       >
         <div class="modal-dialog">
           <div class="modal-content">
@@ -54,13 +53,25 @@ const EditPlayer = ({ player }) => {
               </button>
             </div>
 
-            <div class="modal-body">
+            <div className="modal-body">
+              <div>
+                <input
+                    type="number"
+                    className="form-control"
+                    value={new_id}
+                    onChange={(e) => set_NewId(e.target.value)}
+                    placeholder={"Edit ID"}
+                />
+              </div>
+              <div className="modal-body"></div>
               <input
-                type="text"
-                className="form-control"
-                value={first_name}
-                onChange={(e) => setFirst_name(e.target.value)}
+                  type="text"
+                  className="form-control"
+                  value={first_name}
+                  onChange={(e) => setFirst_name(e.target.value)}
+                  placeholder={"Edit First Name"}
               />
+              
             </div>
             <div class="modal-body">
               <input
@@ -68,6 +79,7 @@ const EditPlayer = ({ player }) => {
                 className="form-control"
                 value={last_name}
                 onChange={(e) => setLast_name(e.target.value)}
+                placeholder={"Edit Last Name"}
               />
             </div>
             <div class="modal-body">
@@ -76,6 +88,7 @@ const EditPlayer = ({ player }) => {
                 className="form-control"
                 value={codename}
                 onChange={(e) => setCodename(e.target.value)}
+                placeholder={"Edit Codename"}
               />
             </div>
 
@@ -117,7 +130,6 @@ const EditPlayer = ({ player }) => {
       <div
         class="modal"
         id={`id${player.id}`}
-        onClick={() => setFirst_name(player.first_name)}
       >
         <div class="modal-dialog">
           <div class="modal-content">
@@ -132,37 +144,42 @@ const EditPlayer = ({ player }) => {
                 &times;
               </button>
             </div>
-            <input
-                type="text"
-                placeholder="Add ID"
-                className="form-control"
-                value={id}
-                onChange={(e) => setId(e.target.id)}
-            />
-            <div class="modal-body">
+
+            <div className="modal-body">
+              <div>
+                <input
+                    type="number"
+                    className="form-control"
+                    value={new_id}
+                    onChange={(e) => set_NewId(e.target.value)}
+                    placeholder={"Edit ID"}
+                />
+              </div>
+              <div className="modal-body"></div>
               <input
-                type="text"
-                className="form-control"
-                value={first_name}
-                onChange={(e) => setFirst_name(e.target.value)}
+                  type="text"
+                  className="form-control"
+                  value={first_name}
+                  onChange={(e) => setFirst_name(e.target.value)}
+                  placeholder={"Edit First Name"}
               />
             </div>
-
-            <div class="modal-body">
+            <div className="modal-body">
               <input
-                type="text"
-                className="form-control"
-                value={last_name}
-                onChange={(e) => setLast_name(e.target.value)}
+                  type="text"
+                  className="form-control"
+                  value={last_name}
+                  onChange={(e) => setLast_name(e.target.value)}
+                  placeholder={"Edit Last Name"}
               />
             </div>
-
-            <div class="modal-body">
+            <div className="modal-body">
               <input
-                type="text"
-                className="form-control"
-                value={codename}
-                onChange={(e) => setCodename(e.target.value)}
+                  type="text"
+                  className="form-control"
+                  value={codename}
+                  onChange={(e) => setCodename(e.target.value)}
+                  placeholder={"Edit Codename"}
               />
             </div>
 

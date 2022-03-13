@@ -36,8 +36,11 @@ const InputPlayer = () => {
 
       let jsonData = await idtaken.json();
       if(jsonData.id_exists === "True"){
-        alert("ID is already taken!");
-        return;
+        if(jsonData.status === 'inactive') await fetch(`players/${id}`,{method: "DELETE"});
+        else {
+          alert("ID is already taken!");
+          return;
+        }
       }
 
       const response = await fetch("/players", {
