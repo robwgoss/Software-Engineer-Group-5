@@ -56,8 +56,8 @@ app.get("/player_status/:status", async(req,res)=>{
 app.get("/check_id/:id", async(req,res)=>{
     try{
         const id = req.params.id;
-        const found = await pool.query("SELECT * FROM player WHERE id = $1", [id]);
-        found.rows.length === 0 ? res.json({"id_exists" : "False"}) : res.json({"id_exists" : "True"});
+        const found = await pool.query("SELECT status FROM player WHERE id = $1", [id]);
+        found.rows.length === 0 ? res.json({"id_exists" : "False"}) : res.json({"id_exists" : "True", "status" : found.rows[0].status});
     }catch(err){
         console.error(err.message);
     }
@@ -82,10 +82,10 @@ app.get("/player_id/:id", async(req,res) =>{
 app.put("/players/:id", async(req,res)=>{
     try{
         const id = req.params.id;
-        const{first_name, last_name, codename, status} = req.body;
+        const{new_id, first_name, last_name, codename, status} = req.body;
         const updatePlayer = await pool.query(
-            'UPDATE "player" SET first_name = $1, last_name = $2, codename = $3 , status = $4 WHERE id = $5',
-            [first_name, last_name, codename, status, id]
+            'UPDATE "player" SET id = $1, first_name = $2, last_name = $3, codename = $4 , status = $5 WHERE id = $6',
+            [new_id, first_name, last_name, codename, status, id]
         );
             res.json("Player was updated!");
     }catch(err){
