@@ -10,7 +10,7 @@ First clone the respository, this repo does not have node_modules installed so t
 
 1) Navigate to the top-level project folder in terminal. 
 
-2) Run the command `npm install` to install the node_modules for the server.
+2) Run the command `npm install nodemon` to install the node_modules for the server.
 
 3) Run the command `nodemon index` to start a local server.
 
