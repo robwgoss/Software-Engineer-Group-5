@@ -6,20 +6,22 @@ import { useNavigate } from "react-router-dom";
 
 const InputPlayer = () => {
   let navigate = useNavigate();
+  const [id, setId] = useState("");
   const [first_name, setFirst_name] = useState("");
   const [last_name, setLast_name] = useState("");
   const [codename, setCodename] = useState("");
 
+  const [id_green, setId_green] = useState("");
   const [first_nameGreen, setFirst_nameGreen] = useState("");
   const [last_nameGreen, setLast_nameGreen] = useState("");
   const [codenameGreen, setCodenameGreen] = useState("");
 
 
-  const onSubmitForm = async (event, first_name, last_name, codename, playerStatus) => {
+  const onSubmitForm = async (event, id, first_name, last_name, codename, playerStatus) => {
     event.preventDefault();
   
     try {
-      const body = {first_name,last_name,codename, 'status' : playerStatus};
+      const body = {id,first_name,last_name,codename, 'status' : playerStatus};
       
       //proxy is only use in development so it will be ignored in production
       //so if there is no http://localhost:5000 then by default it is going to use heroku domain
@@ -27,11 +29,22 @@ const InputPlayer = () => {
 
       //https://pern-player-app-demo.herokuapp.com/players
 
+      const idtaken = await fetch('/check_id/'+id, {
+        method: "GET",
+        headers: {"Content-Type": "application/json"}
+      });
+
+      let jsonData = await idtaken.json();
+      if(jsonData.id_exists === "True"){
+        alert("ID is already taken!");
+        return;
+      }
+
       const response = await fetch("/players", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
-      });
+      })
       window.location = "/";
     
     } catch (err) {
@@ -72,7 +85,14 @@ const routeChangeToSplashScreen = ()=>{
       <div class="col bg-danger text-white"><h1 className="text-left my-5 ">Input Player (RED TEAM)</h1>
      
      
-     <form className="d-flex flex-column" onSubmit={(e) => onSubmitForm(e, first_name, last_name, codename, 'red')} >
+     <form className="d-flex flex-column" onSubmit={(e) => onSubmitForm(e, id, first_name, last_name, codename, 'red')} >
+       <input
+           type="number"
+           placeholder="Add ID"
+           className="form-control"
+           value={id}
+           onChange={(e) => setId(e.target.value)}
+       />
        <input
          type="text"
          placeholder="Add First Name (Optional)"
@@ -80,7 +100,6 @@ const routeChangeToSplashScreen = ()=>{
          value={first_name}
          onChange={(e) => setFirst_name(e.target.value)}
        />
-       
        <input
          type="text"
          placeholder="Add Last Name (Optional)"
@@ -101,7 +120,14 @@ const routeChangeToSplashScreen = ()=>{
       
      <div class="col bg-success text-white"><h1 className="text-right my-5 ">Input Player (Green TEAM)</h1>
      
-     <form className="d-flex flex-column" onSubmit={(e) => onSubmitForm(e, first_nameGreen, last_nameGreen, codenameGreen, 'green')}>
+     <form className="d-flex flex-column" onSubmit={(e) => onSubmitForm(e, id_green, first_nameGreen, last_nameGreen, codenameGreen, 'green')}>
+       <input
+           type="number"
+           placeholder="Add ID (Integer)"
+           className="form-control"
+           value={id_green}
+           onChange={(e) => setId_green(e.target.value)}
+       />
        <input
          type="text"
          placeholder="Add First Name (Optional)"

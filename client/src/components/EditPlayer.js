@@ -5,7 +5,7 @@ const EditPlayer = ({ player }) => {
 
   const editText = async (id, player_status) => {
     try {
-      const body = { first_name, last_name, codename, status : player_status };
+      const body = {id, first_name, last_name, codename, status : player_status };
 
       //proxy
       const res = await fetch(`/players/${id}`, {
@@ -18,7 +18,8 @@ const EditPlayer = ({ player }) => {
       console.error(err.message);
     }
   };
-  
+
+  const [id, setId] = useState(player.id)
   const [first_name, setFirst_name] = useState(player.first_name);
   const [last_name, setLast_name] = useState(player.last_name);
   const [codename, setCodename] = useState(player.codename);
@@ -131,7 +132,13 @@ const EditPlayer = ({ player }) => {
                 &times;
               </button>
             </div>
-
+            <input
+                type="text"
+                placeholder="Add ID"
+                className="form-control"
+                value={id}
+                onChange={(e) => setId(e.target.id)}
+            />
             <div class="modal-body">
               <input
                 type="text"

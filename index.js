@@ -28,13 +28,11 @@ app.use(express.json());//req.body
 //CREATE A PLAYER
 app.post("/players", async(req, res) =>{
     try{
-      const{first_name, last_name, codename, status} = req.body;
-
-        console.log("Added player ", first_name, last_name, codename, status);
+      const{id, first_name, last_name, codename, status} = req.body;
       
       const newPlayer = await pool.query(
-      "INSERT INTO player (first_name, last_name, codename, status) VALUES($1,$2,$3,$4) RETURNING *", 
-      [first_name, last_name, codename, status]
+      "INSERT INTO player (id, first_name, last_name, codename, status) VALUES($1,$2,$3,$4, $5) RETURNING *",
+      [id, first_name, last_name, codename, status]
       );
 
       res.json(newPlayer.rows[0]);
@@ -47,7 +45,6 @@ app.post("/players", async(req, res) =>{
 //GET ALL PLAYERS DEPENDING ON STATUS
 app.get("/player_status/:status", async(req,res)=>{
     try{
-        console.log(req.params);
         const status = req.params.status;
         const allPlayers = await pool.query("SELECT * FROM player WHERE status = $1", [status]);
         res.json(allPlayers.rows);
@@ -56,6 +53,15 @@ app.get("/player_status/:status", async(req,res)=>{
     }
 });
 
+app.get("/check_id/:id", async(req,res)=>{
+    try{
+        const id = req.params.id;
+        const found = await pool.query("SELECT * FROM player WHERE id = $1", [id]);
+        found.rows.length === 0 ? res.json({"id_exists" : "False"}) : res.json({"id_exists" : "True"});
+    }catch(err){
+        console.error(err.message);
+    }
+});
 
 //GET A PLAYER BASED ON ID
 app.get("/player_id/:id", async(req,res) =>{
