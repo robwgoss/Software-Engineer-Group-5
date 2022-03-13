@@ -38,8 +38,10 @@ const ListPlayers = () => {
     useEffect(()=>{
         getPlayers('red').then((jsonData) => setPlayers(jsonData))
         getPlayers('green').then((jsonData) => setPlayersGreen(jsonData))
+        window.addEventListener('keydown', handleUserKeyPress);
 
         return () => {
+            window.removeEventListener('keydown', handleUserKeyPress);
             console.log("component unmounted");
         }
 
@@ -53,15 +55,6 @@ const ListPlayers = () => {
     }
     
   };
-
-  useEffect(() => {
-    window.addEventListener('keydown', handleUserKeyPress);
-
-    return () => {
-      window.removeEventListener('keydown', handleUserKeyPress);
-    };
-  });
-
 
 return (<Fragment>
     <div class="row">
