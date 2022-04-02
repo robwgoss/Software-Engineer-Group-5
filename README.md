@@ -24,5 +24,7 @@ First clone the respository, this repo does not have node_modules installed so t
 
 4) The application will open up a browser tab and boot locally on `http://localhost:3000/`.
 
+*SETUP DATABASE CONNECTION*
 
+=> IMPORTANT STEP : FOLLOW THIS SHORT VIDEO TUTORIAL TO ACCESS DATABASE FROM HEROKU LOCALLY : https://www.youtube.com/watch?v=f76zBj_M5JY
 
