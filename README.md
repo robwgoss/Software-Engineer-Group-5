@@ -4,19 +4,25 @@ UARK CSCE Spring 2022 Software Engineering project for group 5
 
 **HOW TO RUN LOCALLY**
 
-First clone the respository, this repo does not have node_modules installed so that proccess is within the client and server setup.
+*SETUP DATABASE CONNECTION*
+
+=> IMPORTANT STEP : FOLLOW THIS SHORT VIDEO TUTORIAL TO ACCESS DATABASE FROM HEROKU LOCALLY : https://www.youtube.com/watch?v=f76zBj_M5JY
+
+Clone the respository, this repo does not have node_modules installed so that proccess is within the client and server setup.
 
 *Server*
 
-1) Navigate to the top-level project folder in terminal. 
+1) Navigate to the top-level project folder (/Software-Engineer-Group-5) in terminal in the IDE of your choice (VSCODE RECOMMENDED). 
 
-2) Run the command `npm install nodemon` to install the node_modules for the server.
+2) Run the command `npm install` to install the node_module.
 
-3) Run the command `nodemon index` to start a local server.
+3) Run the command `npm install nodemon` to install the other node libraries for the server. (Don't skip this step, or you will face errors)
+
+4) Run the command `nodemon index` to start a local server.
 
 *Client*
 
-1) Navigate to the `client` folder in a new terminal.
+1) Navigate to the `client` folder in a NEW terminal in the IDE of your choice (VSCODE RECOMMENDED).
 
 2) Run the command `npm install` to install the node_modules for the client, then run `npm install react-router-dom`.
 
@@ -24,7 +30,5 @@ First clone the respository, this repo does not have node_modules installed so t
 
 4) The application will open up a browser tab and boot locally on `http://localhost:3000/`.
 
-*SETUP DATABASE CONNECTION*
 
-=> IMPORTANT STEP : FOLLOW THIS SHORT VIDEO TUTORIAL TO ACCESS DATABASE FROM HEROKU LOCALLY : https://www.youtube.com/watch?v=f76zBj_M5JY
 
