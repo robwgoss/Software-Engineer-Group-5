@@ -25,6 +25,63 @@ app.use(express.json());//req.body
 
 //ROUTES//
 
+var dgram = require('dgram');
+var server = dgram.createSocket('udp4');
+
+const WebSocket = require('ws');
+const wss = new WebSocket.Server({port:8888});
+
+//const wss = new WebSocket.Server({port:5432});
+
+var dataTransmissionAndHits = [];
+var dataPoints = [];
+server.on('message', function(msg,rinfo){
+    console.log("Number is " + msg);
+    createSocketWeb(msg);
+
+    var numberPattern = /\d+/g;
+    var transmitNumber = String(msg).match( numberPattern )[0];
+    var hitNumber = String(msg).match( numberPattern )[1];
+    console.log(transmitNumber);
+    console.log(hitNumber);
+
+    
+    dataTransmissionAndHits.push(`${transmitNumber} HIT ${hitNumber}`);
+    if(dataPoints[transmitNumber]==null){
+        dataPoints[transmitNumber] = 0;
+        dataPoints[transmitNumber] += 10;
+    }else{
+        dataPoints[transmitNumber] += 10;
+    }
+    if(dataPoints[hitNumber]==null){
+        dataPoints[hitNumber] = 0;
+    }else{
+        if(dataPoints[hitNumber] ==0){
+            dataPoints[hitNumber] ==0;
+        }else{
+            dataPoints[hitNumber] -= 10;
+        }
+        
+    }
+   // console.log("Player " + transmitNumber+ " HIT Player " + hitNumber);
+    
+   // console.log("Player " + transmitNumber+ ` HAS ${dataPoints[transmitNumber]} Points And ` + "Player " + hitNumber+ ` HAS ${dataPoints[hitNumber]} Points`);
+    
+});
+server.bind(7500);
+const createSocketWeb = (msg) => {
+    wss.on('connection', async(ws) => {
+        ws.on('message', async(message) => {
+            console.log(`${message}`);
+        })
+        
+    //   console.log(typeof msg);
+        var value = "socket  " + msg;
+    //    console.log(dataPoints);
+        ws.send(JSON.stringify(dataPoints));
+        
+    });
+}
 //CREATE A PLAYER
 app.post("/players", async(req, res) =>{
     try{

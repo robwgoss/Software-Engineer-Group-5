@@ -36,15 +36,59 @@ const ScoresScreen = () => {
         }
     }
 
+    const [dataRec, setDataRec] = useState([]);
+
 useEffect(()=>{
 
     getPlayers('red').then((jsonData) => setPlayers(jsonData))
     getPlayers('green').then((jsonData) => setPlayersGreen(jsonData))
-   return () => {
+    
+              
+    return () => {
+        
        console.log("component unmounted");
    }
 
 }, []);  
+
+
+const [showDataReceived, setShowDataReceived] = useState([]);
+useEffect(()=>{
+           
+
+    //var ws = new WebSocket("ws://127.0.0.1:8888/");
+    
+    var ws = new WebSocket('wss://swe-group-5.herokuapp.com/'); 
+    
+
+    ws.onopen = () => {
+        console.log('Opened Connection!');
+    };
+
+        
+
+    ws.onmessage = (event) => {
+      
+        setDataRec(JSON.parse(event.data)); //array1
+                
+        
+      
+        console.log(dataRec);
+      
+    };
+        
+    
+    ws.onclose = () => {
+
+        console.log('Closed Connection!');
+    };
+       
+    return () => {
+        ws.close();
+   }
+
+})
+
 
 return (<Fragment>
     <div class="row">
@@ -52,7 +96,7 @@ return (<Fragment>
             <table className="table table-danger table-bordered table-curved mt-2 text-center">
         <thead>
         <tr>
-       
+        <th>Id</th>
         <th>Codename</th>
         <th>Points</th>
        
@@ -61,7 +105,9 @@ return (<Fragment>
         <tbody>
         {players.map(player => (
             <tr key={player.id}>
+                <td>{player.id}</td>
                 <td>{player.codename}</td>
+                <td>{dataRec[player.id] != null ? dataRec[player.id] : 0}</td>
             </tr>
          ))}
     </tbody>
@@ -71,6 +117,7 @@ return (<Fragment>
             <table className="table mt-2 table-bordered table-curved table-success text-center">
         <thead>
         <tr>
+            <th>Id</th>
             <th>Codename</th>
             <th>Points</th>
             
@@ -79,7 +126,9 @@ return (<Fragment>
         <tbody>
         {playersGreen.map(player => (
             <tr key={player.id}>
+                <td>{player.id}</td>
                 <td>{player.codename}</td>
+                <td>{dataRec[player.id] != null ? dataRec[player.id] : 0}</td>
             </tr>
          ))}
     </tbody>

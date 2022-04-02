@@ -4,9 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import SplashScreenImage from "../splashscreenlogo.jpg";
 
 import '../App.css';
-import InputPlayer from "./InputPlayer";
-import ListPlayer from "./ListPlayer";
-import { Navigate } from 'react-router-dom';
+
 
 const App = () => {
   const navigate = useNavigate();
