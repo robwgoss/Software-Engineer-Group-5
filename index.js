@@ -29,8 +29,9 @@ var dgram = require('dgram');
 var server = dgram.createSocket('udp4');
 
 const WebSocket = require('ws');
-const wss = new WebSocket.Server({port:8888});
+//const wss = new WebSocket.Server({port:8888});
 
+const wss = new WebSocket.Server({server});
 
 var dataTransmissionAndHits = [];
 var dataPoints = [];

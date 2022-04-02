@@ -56,8 +56,9 @@ const [showDataReceived, setShowDataReceived] = useState([]);
 useEffect(()=>{
            
 
-    var ws = new WebSocket("ws://127.0.0.1:8888/");
-       
+    //var ws = new WebSocket("ws://127.0.0.1:8888/");
+    var HOST = window.origin.replace(/^http/, 'ws')
+    var ws = new WebSocket(HOST); 
     
 
     ws.onopen = () => {
