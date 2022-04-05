@@ -4,10 +4,6 @@ UARK CSCE Spring 2022 Software Engineering project for group 5
 
 **HOW TO RUN LOCALLY**
 
-*SETUP DATABASE CONNECTION*
-
-=> IMPORTANT STEP : FOLLOW THIS SHORT VIDEO TUTORIAL TO ACCESS DATABASE FROM HEROKU LOCALLY : https://www.youtube.com/watch?v=f76zBj_M5JY
-
 Clone the respository, this repo does not have node_modules installed so that proccess is within the client and server setup.
 
 *Server*
