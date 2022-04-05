@@ -56,9 +56,8 @@ const [showDataReceived, setShowDataReceived] = useState([]);
 useEffect(()=>{
            
 
-    //var ws = new WebSocket("ws://127.0.0.1:8888/");
-    
-    var ws = new WebSocket('wss://swe-group-5.herokuapp.com/'); 
+    var ws = new WebSocket("ws://127.0.0.1:8888/");
+       
     
 
     ws.onopen = () => {
