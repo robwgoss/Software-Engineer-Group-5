@@ -1,29 +1,31 @@
 .h1_timer{
-  font-size:1.55vw;
- 
-  margin-top:auto;
-  margin-bottom:auto;
-  margin-right:2.5em;
-  
+  font-size: 1.55vw;
+  justify-content: center;
+  align-items: center;
+  border-left:1em solid transparent;
+  border-right:1em solid transparent;
+  white-space: nowrap;
+  border-bottom:1em solid transparent;
 }
 .timer{
     width:100%;
     height:100vh;
-    background-color: skyblue;
+    background-color: rgb(1, 3, 92);
     display:flex;
     flex-direction: column;
-
 }
 
 .container_timer{
     padding-top:5px;
     display:flex;
-   align-items: flex-start;
+    align-items: flex-start;
    
 }
 
 .timer_container{
-    background-color: #fff;
+    background-color: #ff8c00;
+    color: rgb(1, 3, 92);
+    text-shadow: red 2px 2px;
     width:40vw;
     height:13vh;
     padding: 0rem 0rem;
@@ -32,28 +34,27 @@
     text-align: center;
     margin-left: 8vw;
     margin-right: auto;
-   /*inline block to stay next to return to player screen button*/
-    display:flex ;
-    
+    display: flex;   
 }
 
 .stop,.restart{
     margin-top: 3px;
     margin-bottom: 3px;
-    color: #fff;
+    color: orange;
+    text-shadow: red 2px 2px;
     font-size: 1.5vw;   
-    background-color: skyblue;
+    background-color: rgb(1, 3, 92);
     width: 15.5vh;
     height: 12vh;
     border: none;
     border-radius: 15px;
     cursor:pointer;
-   
 }
 
 .stop{
    
-    margin-right:0em;
+    margin-right: 0.2rem;
+    margin-left: 2rem;
 }
 .restart{
     margin-left:0.2em;
@@ -63,11 +64,8 @@
 .button_style {
     text-decoration: none;
     display:flex;
-   
     padding: 8px 16px;
-    
     margin-left:5rem;
-    
   }
   
 button.button_style:hover {
@@ -76,7 +74,7 @@ button.button_style:hover {
   }
   
   .previous {
-    background-color: #f1f1f1;
+    background-color: #e0cefd;
     color: black;
   }
   
