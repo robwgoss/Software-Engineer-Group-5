@@ -91,7 +91,7 @@ const routeChangeToSplashScreen = ()=>{
   </div>
   <br></br>
       <div class="row">
-      <div class="col bg-danger text-white" style={{borderRadius:"15px 0px 0px 0px", color:"orange", textShadow:"2px 2px red"}}><h1 className="text-center my-5 ">Input Player (RED TEAM)</h1>
+      <div class="col bg-danger text-white" style={{borderRadius:"15px 0px 0px 0px", color:"orange", textShadow:"2px 2px green"}}><h1 className="text-center my-5 ">Input Player (RED TEAM)</h1>
      <form className="d-flex flex-column" onSubmit={(e) => onSubmitForm(e, id, first_name, last_name, codename, 'red')} >
        <input
            type="number"
