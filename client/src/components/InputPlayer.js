@@ -91,9 +91,7 @@ const routeChangeToSplashScreen = ()=>{
   </div>
   <br></br>
       <div class="row">
-      <div class="col bg-danger text-white" style={{borderRadius:"15px 0px 0px 0px"}}><h1 className="text-center my-5 ">Input Player (RED TEAM)</h1>
-     
-     
+      <div class="col bg-danger text-white" style={{borderRadius:"15px 0px 0px 0px", color:"orange", textShadow:"2px 2px red"}}><h1 className="text-center my-5 ">Input Player (RED TEAM)</h1>
      <form className="d-flex flex-column" onSubmit={(e) => onSubmitForm(e, id, first_name, last_name, codename, 'red')} >
        <input
            type="number"
@@ -125,10 +123,8 @@ const routeChangeToSplashScreen = ()=>{
        />
        <button className="btn btn-info" >Add</button>
      </form></div>
-      
-      
-     <div class="col bg-success text-white" style={{borderRadius:"0px 15px 0px 0px"}}><h1 className="text-center my-5 ">Input Player (GREEN TEAM)</h1>
-     
+
+     <div class="col bg-success text-white" style={{borderRadius:"0px 15px 0px 0px", color:"orange", textShadow:"2px 2px red"}}><h1 className="text-center my-5 ">Input Player (GREEN TEAM)</h1>
      <form className="d-flex flex-column" onSubmit={(e) => onSubmitForm(e, id_green, first_nameGreen, last_nameGreen, codenameGreen, 'green')}>
        <input
            type="number"
