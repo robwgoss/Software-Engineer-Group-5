@@ -5,6 +5,14 @@
   width: 50%;
 }
 
+.splash {
+   display: block;
+   margin-left: auto;
+   margin-right: auto;
+   margin-top: 15%;
+   width: 50%;
+   }
+
 .table-curved {
   border-collapse: separate;
   border: solid #ccc 1px;
