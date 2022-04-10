@@ -22,7 +22,7 @@ const App = () => {
 return isLoading ?
 
 //display splash screen image for 3 seconds
-<img src = {SplashScreenImage} width={window.innerWidth/2} height={window.outerHeight/1.1} isLoading={isLoading}class="center" alt="SplashScreen" />:
+<img src={SplashScreenImage} width="800" height="450" isLoading={isLoading} class="splash" alt="SplashScreen" /> :
 
 //main page (player entry screen)
   <>
