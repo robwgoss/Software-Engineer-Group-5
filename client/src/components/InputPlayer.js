@@ -79,6 +79,7 @@ const routeChangeToSplashScreen = ()=>{
     <Fragment>
 
 <div className = "container">
+  <br></br>
   <div style={{display:"flex"}}>
   <button onClick = {routeChangeToSplashScreen} class="next round" style={{marginLeft:"1%"}}>&laquo;Show Logo Screen</button>
   
@@ -88,8 +89,9 @@ const routeChangeToSplashScreen = ()=>{
       <button onClick = {routeChangeToPlayAction} class="next round" style={{marginLeft:"15%"}}>Play Action Screen (Key F5)&#8250;</button>
   
   </div>
+  <br></br>
       <div class="row">
-      <div class="col bg-danger text-white"><h1 className="text-left my-5 ">Input Player (RED TEAM)</h1>
+      <div class="col bg-danger text-white" style={{borderRadius:"15px 0px 0px 0px"}}><h1 className="text-center my-5 ">Input Player (RED TEAM)</h1>
      
      
      <form className="d-flex flex-column" onSubmit={(e) => onSubmitForm(e, id, first_name, last_name, codename, 'red')} >
@@ -125,7 +127,7 @@ const routeChangeToSplashScreen = ()=>{
      </form></div>
       
       
-     <div class="col bg-success text-white"><h1 className="text-right my-5 ">Input Player (GREEN TEAM)</h1>
+     <div class="col bg-success text-white" style={{borderRadius:"0px 15px 0px 0px"}}><h1 className="text-center my-5 ">Input Player (GREEN TEAM)</h1>
      
      <form className="d-flex flex-column" onSubmit={(e) => onSubmitForm(e, id_green, first_nameGreen, last_nameGreen, codenameGreen, 'green')}>
        <input

@@ -55,7 +55,7 @@ useEffect(()=>{
 return (<Fragment>
     <br/>
     <div class="row">
-    <div class="col-sm-6 bg-danger table-striped text-white table-responsive table-sm">
+    <div class="col-sm-6 bg-danger table-striped text-white table-responsive table-sm" style={{borderRadius:"15px 0px 0px 15px"}}>
             <table className="table table-danger table-bordered table-curved mt-2 text-center">
         <thead>
         <tr>
@@ -75,7 +75,7 @@ return (<Fragment>
     </tbody>
   </table></div>
 
-  <div class="col-sm-6 bg-success text-white table-striped table-responsive table-sm">
+  <div class="col-sm-6 bg-success text-white table-striped table-responsive table-sm" style={{borderRadius:"0px 15px 15px 0px"}}>
             <table className="table mt-2 table-bordered table-curved table-success text-center">
         <thead>
         <tr>
