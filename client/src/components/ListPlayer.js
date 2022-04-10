@@ -8,14 +8,13 @@ const ListPlayers = () => {
     const [players, setPlayers] = useState([]);
     const [playersGreen, setPlayersGreen] = useState([]);
 
-    const deletePlayer = async (id, status) => {
-        try{    
-          const deletePlayer = await fetch(`players/${id}`,{
-              method: "DELETE"
-          });
-
-          setPlayers(players.filter(player => player.id !== id));
-          setPlayersGreen(playersGreen.filter(player => player.id !== id));
+    const deletePlayer = async (id) => {
+        try{
+            await fetch(`players/${id}`,{
+                method: "DELETE"
+            });
+            setPlayers(players.filter(player => player.id !== id));
+            setPlayersGreen(playersGreen.filter(player => player.id !== id));
         }catch(err){
             console.error(err.message);
         }
@@ -113,7 +112,6 @@ return (<Fragment>
   </table></div>
 
     </div>
-
 </Fragment>);
 };
 
