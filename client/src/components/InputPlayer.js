@@ -91,7 +91,7 @@ const routeChangeToSplashScreen = ()=>{
      <form className="d-flex flex-column" onSubmit={(e) => onSubmitForm(e, id, first_name, last_name, codename, 'red')} >
        <input
            type="number"
-           placeholder="Add ID"
+           placeholder="Add ID (Integer)"
            className="form-control"
            value={id}
            onChange={(e) => setId(e.target.value)}
@@ -121,7 +121,7 @@ const routeChangeToSplashScreen = ()=>{
      </form></div>
       
       
-     <div class="col bg-success text-white"><h1 className="text-right my-5 ">Input Player (Green TEAM)</h1>
+     <div class="col bg-success text-white"><h1 className="text-right my-5 ">Input Player (GREEN TEAM)</h1>
      
      <form className="d-flex flex-column" onSubmit={(e) => onSubmitForm(e, id_green, first_nameGreen, last_nameGreen, codenameGreen, 'green')}>
        <input
