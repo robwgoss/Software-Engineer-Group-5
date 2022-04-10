@@ -89,7 +89,7 @@ const routeChangeToSplashScreen = ()=>{
   
   </div>
       <div class="row">
-      <div class="col bg-danger text-white"><h1 className="text-left my-5 ">Input Player (RED TEAM)</h1>
+      <div class="col bg-danger text-white"><h1 className="text-left my-5 "  style={{color:"orange", textShadow:"2px 2px red"}}>Input Player (RED TEAM)</h1>
      
      
      <form className="d-flex flex-column" onSubmit={(e) => onSubmitForm(e, id, first_name, last_name, codename, 'red')} >
@@ -125,7 +125,7 @@ const routeChangeToSplashScreen = ()=>{
      </form></div>
       
       
-     <div class="col bg-success text-white"><h1 className="text-right my-5 ">Input Player (GREEN TEAM)</h1>
+     <div class="col bg-success text-white"><h1 className="text-right my-5 "  style={{color:"orange", textShadow:"2px 2px red"}}>Input Player (GREEN TEAM)</h1>
      
      <form className="d-flex flex-column" onSubmit={(e) => onSubmitForm(e, id_green, first_nameGreen, last_nameGreen, codenameGreen, 'green')}>
        <input
