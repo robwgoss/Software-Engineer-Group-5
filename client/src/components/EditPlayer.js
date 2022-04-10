@@ -8,7 +8,7 @@ const EditPlayer = ({ player }) => {
       const body = {new_id, first_name, last_name, codename, status : player_status };
 
       //proxy
-      const res = await fetch(`/players/${id}`, {
+      await fetch(`/players/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
@@ -126,7 +126,6 @@ const EditPlayer = ({ player }) => {
       >
         Edit
       </button>
-      {/* id = "id21"*/}
       <div
         class="modal"
         id={`id${player.id}`}

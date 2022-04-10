@@ -6,10 +6,6 @@ const path = require("path");
 const PORT = process.env.PORT || 5000;
 
 
-
-//process.env.PORT
-//process.env.NODE_ENV => production or undefined
-
 if (process.env.NODE_ENV === "production") {
     //server static content
     //npm run build
@@ -31,11 +27,9 @@ var server = dgram.createSocket('udp4');
 const WebSocket = require('ws');
 const wss = new WebSocket.Server({port:8888});
 
-//const wss = new WebSocket.Server({port:5432});
-
 var dataTransmissionAndHits = [];
 var dataPoints = [];
-server.on('message', function(msg,rinfo){
+server.on('message', function(msg){
     console.log("Number is " + msg);
     createSocketWeb(msg);
 
@@ -45,7 +39,6 @@ server.on('message', function(msg,rinfo){
     console.log(transmitNumber);
     console.log(hitNumber);
 
-    
     dataTransmissionAndHits.push(`${transmitNumber} HIT ${hitNumber}`);
     if(dataPoints[transmitNumber]==null){
         dataPoints[transmitNumber] = 0;
@@ -61,27 +54,20 @@ server.on('message', function(msg,rinfo){
         }else{
             dataPoints[hitNumber] -= 10;
         }
-        
     }
-   // console.log("Player " + transmitNumber+ " HIT Player " + hitNumber);
-    
-   // console.log("Player " + transmitNumber+ ` HAS ${dataPoints[transmitNumber]} Points And ` + "Player " + hitNumber+ ` HAS ${dataPoints[hitNumber]} Points`);
-    
 });
+
 server.bind(7500);
 const createSocketWeb = (msg) => {
     wss.on('connection', async(ws) => {
         ws.on('message', async(message) => {
             console.log(`${message}`);
         })
-        
-    //   console.log(typeof msg);
-        var value = "socket  " + msg;
-    //    console.log(dataPoints);
+
         ws.send(JSON.stringify(dataPoints));
-        
     });
 }
+
 //CREATE A PLAYER
 app.post("/players", async(req, res) =>{
     try{
@@ -131,7 +117,6 @@ app.get("/player_id/:id", async(req,res) =>{
     res.json(player.rows[0])
     }catch(err){
         console.error(err.message);
-        
     }
 });
 
@@ -140,11 +125,11 @@ app.put("/players/:id", async(req,res)=>{
     try{
         const id = req.params.id;
         const{new_id, first_name, last_name, codename, status} = req.body;
-        const updatePlayer = await pool.query(
+        await pool.query(
             'UPDATE "player" SET id = $1, first_name = $2, last_name = $3, codename = $4 , status = $5 WHERE id = $6',
             [new_id, first_name, last_name, codename, status, id]
         );
-            res.json("Player was updated!");
+        res.json("Player was updated!");
     }catch(err){
         console.error(err.message);
     }
@@ -154,8 +139,7 @@ app.put("/players/:id", async(req,res)=>{
 app.delete("/players/:id", async(req,res)=>{
     try{
         const id = req.params.id;
-        const deletePlayer = await pool.query("DELETE FROM player WHERE id = $1", 
-        [id]);
+        await pool.query("DELETE FROM player WHERE id = $1", [id]);
         res.json("Player was deleted!");
 
     }catch(err){
@@ -167,7 +151,6 @@ app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "client/build/index.html"));
   });
 
-  
 app.listen(PORT, ()=> {
     console.log(`server has started on port ${PORT}`);
 });
