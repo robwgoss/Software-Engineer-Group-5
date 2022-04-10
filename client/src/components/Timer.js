@@ -66,7 +66,9 @@ const Timer = () => {
     return(
         
         <div className = "timer">
+        <br></br>
         <div className="container_timer">
+            
         <button onClick={routeChange} class="previous round button_style">&laquo; Return To Player Entry Screen</button>
         <div className="timer_container">
             <button onClick={restart} class="restart">RESTART</button>
@@ -81,9 +83,9 @@ const Timer = () => {
     )}else{
         return(
             <div className = "timer">
-               
+            <br></br>
             <div className="container_timer">
-            <button onClick={routeChange} class="previous round button_style">&laquo; Return To Player Screen</button>
+            <button onClick={routeChange} class="previous round button_style">&laquo; Return To Player Entry Screen</button>
             <div className="timer_container">
            
                 <button onClick={restart} class="restart">RESTART</button>
