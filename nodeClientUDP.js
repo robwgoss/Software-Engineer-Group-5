@@ -19,7 +19,7 @@ var recursiveAsyncReadLine = function () {
         rl.question('Enter The Id Of Player Being Hit : ', function (playerHit) {
             console.log(`${playerTransmit} HIT ${playerHit}...Score Updated On Web Application`);
             
-            s.send(Buffer.from(`${playerTransmit}:${playerHit}`),7500,'127.0.0.1');
+            s.send(Buffer.from(`${playerTransmit}:${playerHit}`),7501,'127.0.0.1');
             recursiveAsyncReadLine();
           });
         recursiveAsyncReadLine(); //Calling this function again to ask new question
