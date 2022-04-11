@@ -20,8 +20,11 @@ const ScoresScreen = () => {
         }
     }
 
-const [dataRec, setDataRec] = useState([]);
+const [dataRec, setDataRec] = useState([0]);
 
+const [dataTransmisssionStats, setDataTransmisssionStats] = useState([]);
+
+const [statusPlayerGame, setStatusPlayerGame] = useState([]);
 useEffect(()=>{
     getPlayers('red').then((jsonData) => setPlayers(jsonData))
     getPlayers('green').then((jsonData) => setPlayersGreen(jsonData))
@@ -31,6 +34,10 @@ useEffect(()=>{
    }
 }, []);  
 
+
+const [playerRedTotal, setPlayerRedTotal] = useState([]);
+
+const [playerGreenTotal, setPlayerGreenTotal] = useState([]);
 useEffect(()=>{
     var ws = new WebSocket("ws://127.0.0.1:8888/");
 
@@ -39,18 +46,73 @@ useEffect(()=>{
     };
 
     ws.onmessage = (event) => {
-        setDataRec(JSON.parse(event.data)); //array1
-        console.log(dataRec);
-    };
+       // setDataRec(JSON.parse(event.data)); //array1
 
-    ws.onclose = () => {
-        console.log('Closed Connection!');
-    };
-       
-    return () => {
-        ws.close();
-   }
-})
+        console.log(JSON.parse(event.data));
+        var eventParsed = JSON.parse(event.data);
+   
+        switch (eventParsed.type)    {
+            case "scorePoints" :
+             
+                setDataRec(eventParsed.obj_array); //array1
+                
+            break;
+            case "dataStats" :
+            {    
+            console.log("testing testing testing testing");
+                setDataTransmisssionStats(eventParsed.obj_array); //array 2
+                
+                var playerTransmit;
+            var playerHit;
+            for(let i = 0 ; i<dataTransmisssionStats.length; i++){
+               
+                if(dataTransmisssionStats[i] == 1){
+                    playerTransmit = i;
+                }
+                if(dataTransmisssionStats[i] == 0){
+                    playerHit = i;
+                }
+            }
+            setStatusPlayerGame(`Player ${playerTransmit} HIT Player ${playerHit}`);
+           
+        }
+    
+            break;
+            
+        }
+    
+    
+             console.log(dataRec);
+             
+            console.log(statusPlayerGame);
+        };
+
+        var redtotal = 0;
+             for(let i = 0; i < players.length;i++){
+                 if(dataRec[players[i].id] != null){
+                     redtotal += dataRec[players[i].id];
+                 }
+             }
+             setPlayerRedTotal(redtotal);
+             var greentotal = 0;
+             for(let i = 0; i < playersGreen.length;i++){
+                 if(dataRec[playersGreen[i].id] != null){
+                     greentotal += dataRec[playersGreen[i].id];
+                 }
+             }
+             setPlayerGreenTotal(greentotal);
+          
+    
+        ws.onclose = () => {
+            console.log('Closed Connection!');
+        };
+           
+        return () => {
+            ws.close();
+       }
+    })
+    
+
 
 return (<Fragment>
     <br/>
@@ -73,7 +135,9 @@ return (<Fragment>
             </tr>
          ))}
     </tbody>
-  </table></div>
+  </table>
+  <h1>Total Score: {playerRedTotal}</h1>
+  </div>
 
   <div class="col-sm-6 bg-success text-white table-striped table-responsive table-sm" style={{borderRadius:"0px 15px 15px 0px"}}>
             <table className="table mt-2 table-bordered table-curved table-success text-center">
@@ -93,7 +157,13 @@ return (<Fragment>
             </tr>
          ))}
     </tbody>
-  </table></div>
+  </table>
+  
+
+  <h1>Total Score: {playerGreenTotal}</h1>
+  </div>
+  <h1 style={{color:"white"}}>{statusPlayerGame}</h1>
+  
     </div>
 </Fragment>);
 };

@@ -32,6 +32,7 @@ var dataPoints = [];
 server.on('message', function(msg){
     console.log("Number is " + msg);
     createSocketWeb(msg);
+    dataTransmissionAndHits.length = 0;
 
     var numberPattern = /\d+/g;
     var transmitNumber = String(msg).match( numberPattern )[0];
@@ -39,34 +40,56 @@ server.on('message', function(msg){
     console.log(transmitNumber);
     console.log(hitNumber);
 
-    dataTransmissionAndHits.push(`${transmitNumber} HIT ${hitNumber}`);
+   
     if(dataPoints[transmitNumber]==null){
         dataPoints[transmitNumber] = 0;
         dataPoints[transmitNumber] += 10;
+
+        dataTransmissionAndHits[transmitNumber] = 1;
     }else{
         dataPoints[transmitNumber] += 10;
+
+        dataTransmissionAndHits[transmitNumber] = 1;
     }
     if(dataPoints[hitNumber]==null){
         dataPoints[hitNumber] = 0;
+
+        dataTransmissionAndHits[hitNumber] = 0;
     }else{
         if(dataPoints[hitNumber] ==0){
             dataPoints[hitNumber] ==0;
+
+            dataTransmissionAndHits[hitNumber] = 0;
         }else{
             dataPoints[hitNumber] -= 10;
+
+            dataTransmissionAndHits[hitNumber] = 0;
+
         }
     }
+    
+    console.log(dataTransmissionAndHits);
 });
 
-server.bind(7500);
+server.bind(7501);
 const createSocketWeb = (msg) => {
     wss.on('connection', async(ws) => {
         ws.on('message', async(message) => {
             console.log(`${message}`);
         })
 
-        ws.send(JSON.stringify(dataPoints));
+        ws.send(JSON.stringify({
+            'type': 'scorePoints',    
+            'obj_array': dataPoints,
+            }));
+            ws.send(JSON.stringify({
+                'type': 'dataStats',    
+                'obj_array': dataTransmissionAndHits,
+                }));
     });
 }
+
+
 
 //CREATE A PLAYER
 app.post("/players", async(req, res) =>{
