@@ -1,6 +1,8 @@
 UARK CSCE Spring 2022 Software Engineering project for group 5
 
-*LIVE DEPLOY:* https://swe-group-5.herokuapp.com/
+*LIVE DEPLOY:* https://swe-group-5.herokuapp.com/ (DON'T VIEW FOR SPRINT 4)
+
+----USE PYTHON TRAFFIC GENERATOR PROVIDED BY PROFESSOR----
 
 **HOW TO RUN LOCALLY**
 

@@ -28,7 +28,9 @@ const [statusPlayerGame, setStatusPlayerGame] = useState([]);
 useEffect(()=>{
     getPlayers('red').then((jsonData) => setPlayers(jsonData))
     getPlayers('green').then((jsonData) => setPlayersGreen(jsonData))
+  
 
+        
     return () => {
        console.log("component unmounted");
    }
@@ -43,11 +45,13 @@ useEffect(()=>{
 
     ws.onopen = () => {
         console.log('Opened Connection!');
-    };
-
+    }; 
+   
+       
+     
     ws.onmessage = (event) => {
        // setDataRec(JSON.parse(event.data)); //array1
-
+       
         console.log(JSON.parse(event.data));
         var eventParsed = JSON.parse(event.data);
    
@@ -73,8 +77,18 @@ useEffect(()=>{
                     playerHit = i;
                 }
             }
-            setStatusPlayerGame(`Player ${playerTransmit} HIT Player ${playerHit}`);
-           
+           // setStatusPlayerGame("Player "+ players[playerTransmit-1].codename +" HIT Player " + playersGreen[playerHit-1].codename);
+      
+              for(let i = 0; i< players.length; i++){
+               if(playerTransmit == players[i]["id"]){
+                setStatusPlayerGame("Player "+ players[i]["codename"] +" HIT Player " + playersGreen[i]["codename"]);
+               }
+           }
+           for(let i = 0; i< playersGreen.length; i++){
+            if(playerTransmit == playersGreen[i]["id"]){
+             setStatusPlayerGame("Player "+ playersGreen[i]["codename"] +" HIT Player " + players[i]["codename"]);
+            }
+           }
         }
     
             break;
