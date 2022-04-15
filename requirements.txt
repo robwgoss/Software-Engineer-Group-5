@@ -1,0 +1,14 @@
+"dependencies": {
+    "bufferutil": "^4.0.6",
+    "cors": "^2.8.5",
+    "dgram": "^1.0.1",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "nodemon": "^2.0.15",
+    "pg": "^8.7.3",
+    "utf-8-validate": "^5.0.9",
+    "ws": "^8.5.0"
+  },
+  "devDependencies": {
+    "react-router-dom": "^6.2.2"
+  }
